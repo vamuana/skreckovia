@@ -133,8 +133,6 @@ body { margin: 0; font-family: var(--font-sans); color: var(--color-text); }
   height: 200px;
   object-fit: cover;
 }
-
-/* Responsive */
 @media (max-width: 768px) {
   .page-hero {
     flex-direction: column;

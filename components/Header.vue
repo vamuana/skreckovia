@@ -2,10 +2,8 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import logo from '~/assets/image/logo.png'
-
 const router = useRouter()
 const menuOpen = ref(false)
-
 function goTo(path) {
   menuOpen.value = false
   router.push(path)
@@ -20,8 +18,6 @@ function goTo(path) {
         <img :src="logo" alt="Svet škrečkov" class="hamster-logo" />
         <span class="hamster-title">Svet škrečkov</span>
       </div>
-
-      <!-- Desktop Navigation -->
       <nav class="hamster-nav">
         <ul>
           <li><a @click.prevent="goTo('/')" href="#">Domov</a></li>
@@ -32,16 +28,13 @@ function goTo(path) {
           <li><a @click.prevent="goTo('/gallery')" href="#">Galéria</a></li>
         </ul>
       </nav>
-
-      <!-- Mobile Hamburger -->
       <button class="hamster-menu-btn" @click="menuOpen = !menuOpen">
-        <span :class="{ open: menuOpen }"></span>
-        <span :class="{ open: menuOpen }"></span>
-        <span :class="{ open: menuOpen }"></span>
+        <span style="background-color: #db5490" :class="{ open: menuOpen }"></span>
+        <span style="background-color: #db5490" :class="{ open: menuOpen }"></span>
+        <span style="background-color: #db5490" :class="{ open: menuOpen }"></span>
       </button>
     </div>
 
-    <!-- Mobile Navigation -->
     <nav v-if="menuOpen" class="hamster-nav--mobile">
       <ul>
         <li><a @click.prevent="goTo('/')" href="#">Domov</a></li>
@@ -60,6 +53,7 @@ function goTo(path) {
 :root {
   --c-primary: #a8d5e2;
   --c-secondary: #f1c0e8;
+  --c-hamburger: #db5490;
   --c-bg: rgba(255,255,255,0.75);
   --c-text: #333;
   --font-sans: 'Montserrat', sans-serif;
@@ -101,7 +95,6 @@ function goTo(path) {
   font-weight: 600;
 }
 
-/* Desktop nav */
 .hamster-nav ul {
   display: flex;
   gap: 1.75rem;
@@ -121,7 +114,6 @@ function goTo(path) {
   color: #fff;
 }
 
-/* Hamburger */
 .hamster-menu-btn {
   display: none;
   flex-direction: column;
@@ -148,7 +140,6 @@ function goTo(path) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Mobile nav */
 .hamster-nav--mobile {
   background: var(--c-bg);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -174,7 +165,6 @@ function goTo(path) {
   color: #fff;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .hamster-nav { display: none; }
   .hamster-menu-btn { display: flex; }

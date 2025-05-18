@@ -1,34 +1,22 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import Header from '~/components/Header.vue'
-
 import healthImg from '~/assets/image/hamster-care.png'
-
 const healthSection = ref(null)
-function scrollToDetails() {
-  healthSection.value?.scrollIntoView({ behavior: 'smooth' })
-}
-
-onMounted(() => window.scrollTo(0, 0))
 </script>
 
 <template>
   <div>
     <Header />
-
-    <!-- Hero -->
     <section class="page-hero">
       <div class="hero-content">
         <h1>Zdravie škrečkov</h1>
         <p>Prevencia a starostlivosť – udržiavajte svojho malého miláčika v špičkovom zdraví.</p>
-
       </div>
       <div class="hero-image">
         <img :src="healthImg" alt="Škrečok pri prehliadke" />
       </div>
     </section>
-
-    <!-- Preventive vs. Warning Signs -->
     <section class="diet-details" ref="healthSection">
       <div class="column recommended">
         <h2>Preventívne opatrenia</h2>
@@ -51,8 +39,6 @@ onMounted(() => window.scrollTo(0, 0))
         </ul>
       </div>
     </section>
-
-    <!-- Health Tips -->
     <section class="feeding-tips">
       <h2>Tipy pre zdravie</h2>
       <ul>
@@ -62,12 +48,10 @@ onMounted(() => window.scrollTo(0, 0))
         <li>Pravidelne kontrolujte zuby, labky a srsť.</li>
       </ul>
     </section>
-
   </div>
 </template>
 
 <style scoped>
-/* Shared root vars */
 :root {
   --color-primary: #a8d5e2;
   --color-secondary: #f1c0e8;
@@ -78,8 +62,6 @@ onMounted(() => window.scrollTo(0, 0))
 }
 * { box-sizing: border-box; }
 body { margin: 0; font-family: var(--font-sans); color: var(--color-text); }
-
-/* — Hero (same as in toys.vue & diet.vue) — */
 .page-hero {
   display: flex;
   flex-wrap: wrap-reverse;
@@ -131,8 +113,6 @@ body { margin: 0; font-family: var(--font-sans); color: var(--color-text); }
   border: 4px solid white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-
-/* — Preventive / Warning section (reuses diet-details styling) — */
 .diet-details {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
@@ -170,8 +150,6 @@ body { margin: 0; font-family: var(--font-sans); color: var(--color-text); }
   display: flex;
   align-items: center;
 }
-
-/* — Health Tips call-out (reuses feeding-tips) — */
 .feeding-tips {
   background: var(--color-accent);
   color: #333;
@@ -199,8 +177,6 @@ body { margin: 0; font-family: var(--font-sans); color: var(--color-text); }
   content: '💡';
   margin-right: .5rem;
 }
-
-/* — Responsive tweaks — */
 @media (max-width: 768px) {
   .page-hero {
     flex-direction: column;

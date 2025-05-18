@@ -1,31 +1,25 @@
 <script setup>
 import Header from '~/components/Header.vue'
-import toyWheel   from '~/assets/image/gallery1.png'
-import toyTunnel  from '~/assets/image/tunnel.png'
-import toyChew    from '~/assets/image/hamster-toy.png'
-import toyPuzzle  from '~/assets/image/puzzle.png'
-import heroToyImg from '~/assets/image/hamster-toy.png'
+import heroSpeciesImg from '~/assets/image/hamster-species.png'
+import syrianImg       from '~/assets/image/syrsky.png'
+import djungarianImg   from '~/assets/image/dzungarsky.png'
+import chineseImg      from '~/assets/image/cinsky.png'
 
-const toyTypes = [
+const speciesList = [
   {
-    image: toyWheel,
-    title: 'Bežecké koleso',
-    text: 'Základná hračká na dennú aktivitu a kardio.',
+    image: syrianImg,
+    title: 'Syrský škrečok',
+    text:  'Najobľúbenejší veľký druh so sýtejšou srsťou a priateľskou povahou.',
   },
   {
-    image: toyTunnel,
-    title: 'Tunely a skrýše',
-    text: 'Poskytujú škrečkovi priestor na prieskum a odpočinok.',
+    image: djungarianImg,
+    title: 'Džungársky škrečok',
+    text:  'Menší druh s hladkou srsťou a aktívnym temperamentom, vhodný do menších priestorov.',
   },
   {
-    image: toyChew,
-    title: 'Žuvacie hračky',
-    text: 'Pomáhajú ošetrovať zuby a poskytujú zábavu.',
-  },
-  {
-    image: toyPuzzle,
-    title: 'Puzzle kŕmidlá',
-    text: 'Stimulujú myslenie a spomaľujú konzumáciu potravy.',
+    image: chineseImg,
+    title: 'Čínsky škrečok',
+    text:  'Drobnejší typ s typickým dlhším telom a elegantným správaním.',
   },
 ]
 </script>
@@ -33,23 +27,22 @@ const toyTypes = [
 <template>
   <div>
     <Header />
-    <section class="hero-toys">
+    <section class="diet-hero">
       <div class="hero-content">
-        <h1>Hračky pre škrečky</h1>
-        <p>Zábavné a bezpečné hračky na obohatenie každodenných aktivít vášho škrečka.</p>
+        <h1>Druhy škrečkov</h1>
+        <p>Prehľad troch najrozšírenejších plemien vám pomôže vybrať toho pravého kamaráta.</p>
       </div>
       <div class="hero-image">
-        <img :src="heroToyImg" alt="Škrečok so hračkou" />
+        <img :src="heroSpeciesImg" alt="Rôzne druhy škrečkov" />
       </div>
     </section>
-
-    <section id="toy-types" class="toy-types">
-      <h2>Druhy hračiek</h2>
+    <section id="species-list" class="toy-types">
+      <h2>Druhy škrečkov</h2>
       <div class="toy-grid">
-        <div v-for="toy in toyTypes" :key="toy.title" class="toy-card">
-          <h3>{{ toy.title }}</h3>
-          <p>{{ toy.text }}</p>
-          <img :src="toy.image" :alt="toy.title" class="toy-image" />
+        <div v-for="sp in speciesList" :key="sp.title" class="toy-card">
+          <h3>{{ sp.title }}</h3>
+          <p>{{ sp.text }}</p>
+          <img :src="sp.image" :alt="sp.title" class="toy-image" />
         </div>
       </div>
     </section>
@@ -63,19 +56,26 @@ const toyTypes = [
   --color-accent: #c3f584;
   --color-text: #333;
   --font-sans: 'Montserrat', sans-serif;
+  --transition: 0.3s ease-in-out;
 }
 
-* { box-sizing: border-box; }
-body { margin:0; font-family: var(--font-sans); color: var(--color-text); }
-.hero-toys {
+* {
+  box-sizing: border-box;
+  transition: var(--transition);
+}
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+}
+
+.diet-hero {
   display: flex;
   flex-wrap: wrap-reverse;
   align-items: center;
   justify-content: space-between;
   padding: 2rem 1rem;
   background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
-
-  position: relative;
 }
 .hero-content {
   flex: 1 1 300px;
@@ -98,18 +98,16 @@ body { margin:0; font-family: var(--font-sans); color: var(--color-text); }
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
   transition: transform .2s ease;
 }
 .hero-content button:hover {
   transform: translateY(-2px);
 }
-
 .hero-image {
   flex: 0 0 200px;
-  margin: 0 1rem;
   display: flex;
   justify-content: center;
+  margin: 1rem;
 }
 .hero-image img {
   width: 180px;
@@ -119,6 +117,7 @@ body { margin:0; font-family: var(--font-sans); color: var(--color-text); }
   border: 4px solid white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+
 .toy-types {
   padding: 3rem 1rem;
 }
@@ -160,7 +159,13 @@ body { margin:0; font-family: var(--font-sans); color: var(--color-text); }
   border: 3px solid var(--color-accent);
 }
 @media (max-width: 768px) {
-  .hero-toys { flex-direction: column; text-align: center; }
-  .hero-image { margin: 1rem 0; }
+  .diet-hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+  .hero-image {
+    margin: 1rem auto;
+  }
 }
 </style>

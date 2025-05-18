@@ -1,25 +1,13 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 import Header from '~/components/Header.vue'
-
-
-// static imports
 import dietImg from '~/assets/image/hamster-diet.png'
-
 const dietSection = ref(null)
-function scrollToContent() {
-  dietSection.value?.scrollIntoView({ behavior: 'smooth' })
-}
-
-onMounted(() => window.scrollTo(0,0))
 </script>
 
 <template>
   <div>
     <Header />
-
-    <!-- Hero (shared style) -->
     <section class="page-hero">
       <div class="hero-content">
         <h1>Strava škrečkov</h1>
@@ -30,8 +18,6 @@ onMounted(() => window.scrollTo(0,0))
         <img :src="dietImg" alt="Škrečok s miskou krmiva" />
       </div>
     </section>
-
-    <!-- Diet Details -->
     <section class="diet-details" ref="dietSection">
       <div class="column recommended">
         <h2>Odporúčané potraviny</h2>
@@ -54,8 +40,6 @@ onMounted(() => window.scrollTo(0,0))
         </ul>
       </div>
     </section>
-
-    <!-- Feeding Tips -->
     <section class="feeding-tips">
       <h2>Tipy pre kŕmenie</h2>
       <ul>
@@ -65,8 +49,6 @@ onMounted(() => window.scrollTo(0,0))
         <li>Sledujte príjem potravy a váhu zvieraťa.</li>
       </ul>
     </section>
-
-
   </div>
 </template>
 
@@ -83,9 +65,6 @@ onMounted(() => window.scrollTo(0,0))
 * { box-sizing: border-box; }
 body { margin:0; font-family: var(--font-sans); color: var(--color-text); }
 
-/* —————————————————————————————
-   Shared Hero Styles (from Toys)
-   ————————————————————————————— */
 .page-hero {
   display: flex;
   flex-wrap: wrap-reverse;
@@ -138,9 +117,6 @@ body { margin:0; font-family: var(--font-sans); color: var(--color-text); }
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* —————————————————————————————
-   Diet Details
-   ————————————————————————————— */
 .diet-details {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
@@ -178,9 +154,6 @@ body { margin:0; font-family: var(--font-sans); color: var(--color-text); }
   align-items: center;
 }
 
-/* —————————————————————————————
-   Feeding Tips
-   ————————————————————————————— */
 .feeding-tips {
   background: var(--color-primary);
   color: #fff;
@@ -207,9 +180,6 @@ body { margin:0; font-family: var(--font-sans); color: var(--color-text); }
   margin-right: .5rem;
 }
 
-/* —————————————————————————————
-   Responsive
-   ————————————————————————————— */
 @media (max-width: 768px) {
   .page-hero {
     flex-direction: column;

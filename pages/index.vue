@@ -1,15 +1,11 @@
 <template>
   <div>
     <Header />
-
-    <!-- Hero / Top -->
     <section class="hero">
       <img :src="logo" alt="Logo" class="hero-logo" />
       <h1 class="hero-title">Svet škrečkov</h1>
       <p class="hero-subtitle">Všetko, čo potrebujete vedieť o domácom miláčikovi</p>
     </section>
-
-    <!-- Quick-links grid -->
     <section class="quick-links">
       <div
           class="link-card"
@@ -22,8 +18,6 @@
         <p>{{ item.text }}</p>
       </div>
     </section>
-
-    <!-- News / Tipy -->
     <section class="news-section">
       <h2>Novinky a tipy</h2>
       <div class="news-cards">
@@ -38,16 +32,12 @@
         </div>
       </div>
     </section>
-
-    <!-- Pastel-green features -->
     <section class="features">
       <div class="feature" v-for="f in features" :key="f">
         <span class="check">✔︎</span>
         <p>{{ f }}</p>
       </div>
     </section>
-
-    <!-- Info cards -->
     <section class="info-cards">
       <div class="card" v-for="card in cards" :key="card.title">
         <div class="card-bg" :style="{ backgroundImage: `url(${card.image})` }"></div>
@@ -58,8 +48,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Cultural insight -->
     <section class="cultural">
       <div class="culture-img">
         <img :src="funImg" alt="Zábavný škrečok" />
@@ -73,7 +61,6 @@
         </div>
       </div>
     </section>
-    <!-- Gallery carousel -->
     <section class="gallery">
       <h2>Galéria škrečkov</h2>
       <Swiper
@@ -90,10 +77,6 @@
         </SwiperSlide>
       </Swiper>
     </section>
-
-
-
-
   </div>
 </template>
 
@@ -106,7 +89,6 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { Navigation, Pagination } from 'swiper/modules'
 
-// static imports so Vite bundles correctly
 import logo from '~/assets/image/logo.png'
 import tip1 from '~/assets/image/tip1.png'
 import tip2 from '~/assets/image/tip2.png'
@@ -124,7 +106,7 @@ const router = useRouter()
 const goTo = (path) => router.push(path)
 
 const quickLinks = [
-  { icon: '🏡', title: 'Domov', text: 'Základná starostlivosť', link: '/' },
+  { icon: '🏡', title: 'Domov', text: 'Základná starostlivosť', link: '/news' },
   { icon: '🥕', title: 'Strava', text: 'Čo kŕmiť škrečka', link: '/diet' },
   { icon: '🧸', title: 'Hračky', text: 'Tipy na zábavu', link: '/toys' },
   { icon: '⚕️', title: 'Zdravie', text: 'Prevencia a starostlivosť', link: '/health' },
@@ -135,7 +117,7 @@ const tips = [
     image: tip1,
     title: 'Ako pripraviť klietku',
     excerpt:
-        'Postavte malé domčeky, rozložte podstielku v hrubke 3–5 cm a pridajte hračky na škrabotanie.',
+        'Postavte malé domčeky, rozložte podstielku v hrúbke aspoň 15cm a pridajte hračky na škrabotanie.',
   },
   {
     image: tip2,
@@ -163,7 +145,7 @@ const cards = [
     text: 'Návod na hygienu, výmenu podstielky a sledovanie zdravotného stavu.',
     button: 'Čítať',
     image: careImg,
-    link: '/care',
+    link: '/health',
   },
   {
     title: 'Druhy',
@@ -182,39 +164,31 @@ const cards = [
 ]
 
 const gallery = [gallery1, gallery2, gallery3, gallery4]
-
-const bubbles = [
-  { title: 'Chovatelia.sk', url: 'https://chovatelia.sk' },
-  { title: 'HamsterCare', url: 'https://hamstercare.example' },
-  { title: 'Vet.sk', url: 'https://vet.sk' },
-  { title: 'HamsterShop', url: 'https://hamstershop.example' },
-]
 </script>
 
 <style>
 :root {
   --color-bg: #f6f5f3;
-  --color-primary: #a8d5e2;    /* pastel blue */
-  --color-secondary: #f1c0e8;  /* pastel pink */
-  --color-accent: #c3f584;     /* pastel green */
+  --color-primary: #a8d5e2;
+  --color-secondary: #f1c0e8;
+  --color-accent: #c3f584;
   --color-text: #333;
   --font-sans: 'Montserrat', sans-serif;
   --transition: 0.3s ease-in-out;
 }
-/* replace your existing .culture-img rules with: */
-/* replace your existing .culture-img rules with: */
+
 .culture-img {
   position: relative;
-  max-height: 100vh;   /* only ever up to 450px tall */
-  overflow: hidden;    /* crop anything below that */
+  max-height: 100vh;
+  overflow: hidden;
   border-radius: 16px;
 }
 
 .culture-img img {
   display: block;
-  width: 100%;        /* fill the container’s width */
-  height: auto;       /* height auto so aspect ratio is maintained */
-  object-fit: cover;  /* crop bottom if too tall */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 
@@ -225,7 +199,7 @@ const bubbles = [
   bottom: 1.5rem;
   left: 1.5rem;
   right: 1.5rem;
-  background: rgba(241, 192, 232, 0.9); /* pastel-pink bubble */
+  background: rgba(241, 192, 232, 0.9);
   padding: 1rem 1.25rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -282,7 +256,6 @@ body {
   font-family: var(--font-sans);
 }
 
-/* — Hero — */
 .hero {
   text-align: center;
   padding: 5rem 1rem;
@@ -305,7 +278,6 @@ body {
   opacity: 0.9;
 }
 
-/* — Quick-links — */
 .quick-links {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -337,7 +309,6 @@ body {
   opacity: 0.8;
 }
 
-/* — News / Tipy — */
 .news-section {
   padding: 3rem 1rem;
   background: #fff;
@@ -410,7 +381,6 @@ body {
   color: var(--color-primary);
 }
 
-/* — Info cards — */
 .info-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -459,7 +429,6 @@ body {
   cursor: pointer;
 }
 
-/* — Cultural — */
 .cultural {
   display: flex;
   flex-wrap: wrap;
@@ -489,8 +458,6 @@ body {
   width: 100%;
   border-radius: 16px;
 }
-
-/* — Gallery — */
 .gallery {
   padding: 2rem 1rem;
 }
@@ -505,8 +472,6 @@ body {
   object-fit: cover;
   border-radius: 8px;
 }
-
-/* — Bubbles — */
 .links-bubbles {
   padding: 2rem 1rem;
 }
@@ -533,8 +498,6 @@ body {
 .bubble:hover {
   transform: scale(1.05);
 }
-
-/* — Contact — */
 .contact {
   padding: 2rem 1rem;
 }
@@ -574,5 +537,18 @@ body {
   .cultural {
     flex-direction: column;
   }
+  .bubble-text {
+    bottom: 1rem;
+    left: 1rem;
+    width: calc(100% - 2rem);
+    padding: 0.75rem 1rem;
+  }
+  .bubble-text h2 {
+    font-size: 1.5rem;
+  }
+  .bubble-text p {
+    font-size: 0.9rem;
+  }
 }
+
 </style>
